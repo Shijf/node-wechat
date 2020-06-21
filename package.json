@@ -1,0 +1,56 @@
+{
+  "name": "node-wechat",
+  "version": "2.0.0",
+  "description": "基于node的企业微信的SDK",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --require @babel/register",
+    "test:watch": "mocha --require @babel/register --watch",
+    "test:report": "mocha --require @babel/register --reporter mochawesome"
+  },
+  "author": "Shijf",
+  "license": "ISC",
+  "dependencies": {
+    "agentkeepalive": "^4.1.2",
+    "fast-xml-parser": "^3.17.4",
+    "humanize-ms": "^1.2.1",
+    "lndb": "^0.0.3",
+    "typedi": "^0.8.0",
+    "urllib": "^2.36.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.0",
+    "@babel/node": "^7.5.0",
+    "@babel/preset-env": "^7.5.0",
+    "@babel/register": "^7.4.4",
+    "chai": "^4.2.0",
+    "eslint": "^7.2.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": "^4.2.5",
+    "jsdoc": "^3.6.4",
+    "lint-staged": "^10.2.11",
+    "mocha": "^8.0.1",
+    "mochawesome": "^6.1.1",
+    "nodemon": "^2.0.4",
+    "pretty-quick": "^2.0.1"
+  },
+  "engines": {
+    "node": ">=6.0.0",
+    "npm": ">=6.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "lib/*.{jsx,txs,ts,js,json,css,md}": [
+      "eslint --fix"
+    ]
+  }
+}
