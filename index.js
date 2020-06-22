@@ -1,7 +1,7 @@
 /*
  * @Author: OBKoro1
  * @Date: 2020-06-15 11:10:34
- * @LastEditTime: 2020-06-21 23:30:48
+ * @LastEditTime: 2020-06-22 21:54:15
  * @LastEditors: shijf
  * @FilePath: /node-echat/index.js
  * @Description: 
@@ -21,7 +21,7 @@
 class Factory {
     static make() {
         const Application = require(`./lib/platform/${Factory.staticName}/application`);
-        return Application(arguments[0]);
+        return Application(arguments[0], arguments[1]);
     }
 }
 
@@ -31,17 +31,6 @@ let FactoryProxy = new Proxy(Factory, {
         return Reflect.get(target, 'make');
     }
 });
-console.time('timeout');
-
-const app = FactoryProxy.wwlocak(require('./config'));
-
-
-// app.tag.create(9999, 'woshishu');
-app.department.list(100000000);
-
-console.timeEnd('timeout');
-
-
 
 
 module.exports = FactoryProxy;

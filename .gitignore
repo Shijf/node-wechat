@@ -1,5 +1,5 @@
 storge
 node_modules
 out
-log
-config.js
+test/config.js
+test

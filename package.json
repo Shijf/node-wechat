@@ -12,6 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "agentkeepalive": "^4.1.2",
+    "chai": "^4.2.0",
+    "egg-logger": "^2.4.2",
     "fast-xml-parser": "^3.17.4",
     "humanize-ms": "^1.2.1",
     "lndb": "^0.0.3",
@@ -24,7 +26,6 @@
     "@babel/node": "^7.5.0",
     "@babel/preset-env": "^7.5.0",
     "@babel/register": "^7.4.4",
-    "chai": "^4.2.0",
     "eslint": "^7.2.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.21.2",
