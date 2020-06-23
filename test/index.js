@@ -2,7 +2,7 @@
  * @Github: https://github.com/shijf
  * @Author: shijf
  * @Date: 2020-06-15 16:23:11
- * @LastEditTime: 2020-06-22 22:33:11
+ * @LastEditTime: 2020-06-23 15:15:50
  * @LastEditors: shijf
  * @FilePath: /node-echat/test/index.js
  * @Description: 测试主入口
@@ -27,7 +27,13 @@ const Factory = require('./../index');
 
 console.time('timeout');
 
-const app = Factory.wwlocak(config);
+const app = Factory.wwlocal(config);
 
-app.agent.get('1000135')
+// app.agent.getWorkbenchTemplate();
+
+app.messager.textMsg('456').toUser('18000358').send();
+app.messager.textMsg('456').toUser('18000358').send();
+// app.messager.textMsg('456').toUser('18000358').send();
+// app.messager.textMsg('456').toUser('18000358').send();
+
 console.timeEnd('timeout');
