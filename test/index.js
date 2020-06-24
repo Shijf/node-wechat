@@ -2,7 +2,7 @@
  * @Github: https://github.com/shijf
  * @Author: shijf
  * @Date: 2020-06-15 16:23:11
- * @LastEditTime: 2020-06-23 21:56:14
+ * @LastEditTime: 2020-06-24 17:12:28
  * @LastEditors: shijf
  * @FilePath: /node-echat/test/index.js
  * @Description: 测试主入口
@@ -24,21 +24,15 @@
 // })
 const config = require('./config');
 const Factory = require('./../index');
-const ph = require('path')
 console.time('timeout');
 
 const app = Factory.wwlocal(config);
 
-// app.agent.getWorkbenchTemplate();
 
-// app.messager.textMsg('456').toUser('18000358').send();
-const path = require('path');
-const dest = path.join(__dirname, '123.exe');
-// console.log(app.media.uploadFile(dest).then(res => {
-//     console.log(res);
-// }))
-
-// console.log(Helper.formatBytes(2097152, 2));
+console.log(app.user.userIdToOpenid('18000358').then(res => {
+    console.log(res);
+    
+}));
 
 
 
