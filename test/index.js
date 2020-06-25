@@ -2,63 +2,77 @@
  * @Github: https://github.com/shijf
  * @Author: shijf
  * @Date: 2020-06-15 16:23:11
- * @LastEditTime: 2020-06-25 14:22:47
+ * @LastEditTime: 2020-06-25 19:06:14
  * @LastEditors: shijf
  * @FilePath: /node-echat/test/index.js
  * @Description: 测试主入口
- */ 
+ */
 
-// // eslint-disable-next-line no-unused-vars
-// const { expect } = require('chai')
-// const HttpClient = require('../lib/kernel/client/httpclient')
-// // eslint-disable-next-line no-undef
-// describe('httpClient test', () => {
-//     // eslint-disable-next-line no-undef
-//     it('should say Hello world', async () => {
-//         const client = new HttpClient()
-//         const res = client.curl('http://www.baidu.com')
-//         console.log(res);
-        
-//         expect(res).to.equal('Hello world')
-//     })
-// })
+
+
+
+const express = require('express');
+const server = express();
+const bodyParser = require("body-parser");
+// require("body-parser-xml")(bodyParser);
+
 const config = require('./config');
 const Factory = require('./../index');
+const port = 3000;
 
-// const http = require('http');
+server.use(bodyParser.urlencoded({
+  extended: true
+}));
 
-// let server = http.createServer(function (req, res) {
-//     // res.writeHead(301, {'Location': 'http://itbilu.com/'});
-//     console.log('Nodejs TestServer is Starting & Linsten 3100');
-//     const app = Factory.wwlocal(config);
-//     app.jssdk.setUrl('http://www.baidu.com/?a=1&hjk=7979#jkjd');
-//     res.writeHead(301, {'Location': 'http://itbilu.com/'});
-    
-//     console.log(res._header);
-//     res.end();
-//   })
-// console.log('Nodejs TestServer is Starting & Linsten 3100', 'http://127.0.0.1:3100');
-// server.listen(3100)
+server.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
+server.get('/server', (req, res) => {
+  console.log('=================');
 
+  const query = req.query;
+
+  console.log(query);
+  
+  const app = Factory.wwlocal(config);
+
+  const replyMsg = app.server.server(query);
+  console.log(replyMsg);
+
+  res.send(replyMsg)
+})
 const app = Factory.wwlocal(config);
+server.post('/server', (req, res) => {
 
-console.log(app.scan_login.base64_encode(__dirname + '/1.css'));
+  let data = '';//添加接收变量
+  req.setEncoding('utf8');
 
-
-// console.log(app.user.userIdToOpenid('18000358').then(res => {
-//     console.log(res);
+  req.on('data', function (chunk) {
+    data += chunk;
+  });
+  req.on('end', function () {
+    console.log(data);
     
-// }));
+    res.send(app.server.server(req.query, data));
+  });
+  // res.json(req.body)
+  // 
+  // query.data = data;
+  // const replyMsg = app.server.server(query);
+  // console.log(replyMsg);
 
-// app.jssdk.setUrl('http://www.baidu.com/?a=1&hjk=7979#jkjd');
+  
+})
 
-// console.log(app.oauth.redirectUrl());
+server.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 
-// console.timeEnd('timeout');
 
-// 
+
+
+
+
 
 
 
