@@ -1,7 +1,7 @@
 {
   "name": "node-wechat",
   "version": "2.0.0",
-  "description": "基于node的企业微信的SDK",
+  "description": "基于node的微信的SDK",
   "main": "index.js",
   "scripts": {
     "test": "mocha --require @babel/register",
